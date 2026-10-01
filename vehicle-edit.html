@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add/Edit Vehicle — Manchester Auto Cars CMS</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebar-mount"></div>
+  <div class="main">
+    <header class="topbar">
+      <div class="flex gap-12">
+        <button class="hamburger" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div id="topbar-title"></div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-ghost" id="btn-preview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview Vehicle
+        </button>
+        <button class="btn btn-primary" id="btn-save">Save Vehicle</button>
+        <button class="btn btn-primary" id="btn-save-publish" style="background:var(--gold-dim);border-color:var(--gold-dim);">Save &amp; Publish</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <a href="vehicles.html" class="text-grey text-sm" style="display:inline-flex;gap:6px;align-items:center;margin-bottom:16px;text-decoration:none;">← Back to all vehicles</a>
+
+      <form id="vehicle-form" novalidate>
+        <div class="tabs">
+          <button type="button" class="tab-btn active" data-tab="basic">Basic Information</button>
+          <button type="button" class="tab-btn" data-tab="pricing">Pricing</button>
+          <button type="button" class="tab-btn" data-tab="specs">Specifications</button>
+          <button type="button" class="tab-btn" data-tab="description">Description</button>
+          <button type="button" class="tab-btn" data-tab="highlights">Key Features</button>
+          <button type="button" class="tab-btn" data-tab="images">Photos</button>
+          <button type="button" class="tab-btn" data-tab="status">Status</button>
+          <button type="button" class="tab-btn" data-tab="seo">SEO</button>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="tab-panel active" data-panel="basic">
+          <div class="form-section">
+            <div class="section-title">Basic Information</div>
+            <div class="field-row">
+              <div class="field" data-field="make"><label>Make *</label><input name="make" required><span class="error">Make is required.</span></div>
+              <div class="field" data-field="model"><label>Model *</label><input name="model" required><span class="error">Model is required.</span></div>
+            </div>
+            <div class="field-row cols-3">
+              <div class="field"><label>Variant</label><input name="variant"></div>
+              <div class="field" data-field="year"><label>Year *</label><input name="year" type="number" min="1980" max="2100" required><span class="error">Enter a valid year.</span></div>
+              <div class="field"><label>Registration</label><input name="registration"></div>
+            </div>
+            <div class="field-row cols-3">
+              <div class="field"><label>Body Type</label><input name="bodyType" placeholder="e.g. Saloon, Van, SUV"></div>
+              <div class="field"><label>Colour</label><input name="colour"></div>
+              <div class="field"><label>Location</label><input name="location"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="tab-panel" data-panel="pricing">
+          <div class="form-section">
+            <div class="section-title">Pricing</div>
+            <div class="field-row">
+              <div class="field" data-field="price"><label>Price (£) *</label><input name="price" type="number" min="0" step="1" required><span class="error">Enter a valid price.</span></div>
+              <div class="field"><label>Previous Price (£)</label><input name="previousPrice" type="number" min="0" step="1"><span class="hint">Shown struck-through if higher than the current price.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="tab-panel" data-panel="specs">
+          <div class="form-section">
+            <div class="section-title">Specifications</div>
+            <div class="field-row cols-3">
+              <div class="field" data-field="mileage"><label>Mileage (mi) *</label><input name="mileage" type="number" min="0" required><span class="error">Mileage must be numeric.</span></div>
+              <div class="field">
+                <label>Fuel Type</label>
+                <select name="fuel">
+                  <option value="Petrol">Petrol</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Transmission</label>
+                <select name="transmission">
+                  <option value="Manual">Manual</option>
+                  <option value="Automatic">Automatic</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Engine</label><input name="engine" placeholder="e.g. 2.0L TDI"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="tab-panel" data-panel="description">
+          <div class="form-section">
+            <div class="section-title">Description</div>
+            <div class="field">
+              <label>Full Description</label>
+              <textarea name="description" rows="6" placeholder="Describe the vehicle's condition, history and standout features…"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="tab-panel" data-panel="highlights">
+          <div class="form-section">
+            <div class="section-title">Key Features</div>
+            <div class="chip-input">
+              <input type="text" id="highlight-input" placeholder="e.g. Full service history">
+              <button type="button" class="btn btn-sm" id="highlight-add">Add</button>
+            </div>
+            <div class="chip-list" id="highlight-list"></div>
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div class="tab-panel" data-panel="images">
+          <div class="form-section">
+            <div class="section-title">Photos</div>
+            <p class="text-grey text-sm mb-16">Upload multiple photos, drag to reorder, and choose a main photo — it's used as the vehicle's cover image on the public site. Photos upload straight to Cloudinary; only the resulting web addresses are ever saved.</p>
+            <label class="upload-drop" id="vimg-drop" for="vimg-input">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+              <div>Click to upload photos, or drag them here</div>
+              <div class="hint">JPEG, PNG or WEBP, up to 8MB each</div>
+            </label>
+            <input type="file" id="vimg-input" accept="image/jpeg,image/png,image/webp" multiple hidden>
+            <div class="vimg-grid" id="vimg-grid"></div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="tab-panel" data-panel="status">
+          <div class="form-section">
+            <div class="section-title">Status</div>
+            <div class="field-row">
+              <div class="field">
+                <label>Availability</label>
+                <select name="status">
+                  <option value="available">Available</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="sold">Sold</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Featured</label>
+                <label class="toggle" style="margin-top:6px;">
+                  <input type="checkbox" name="featured">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEO -->
+        <div class="tab-panel" data-panel="seo">
+          <div class="form-section">
+            <div class="section-title">SEO</div>
+            <p class="text-grey text-sm mb-16">Website 1 links to this vehicle at <code>/cars/&lt;vehicle-id&gt;</code> using its stable ID — there's no separate slug to manage.</p>
+            <div class="field">
+              <label>SEO Title</label>
+              <input name="seoTitle" maxlength="70">
+            </div>
+            <div class="field mt-24">
+              <label>SEO Description</label>
+              <textarea name="seoDescription" rows="3" maxlength="160"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Preview modal -->
+<div class="modal-backdrop" id="preview-modal">
+  <div class="modal" style="max-width:560px;">
+    <div class="flex-between mb-16">
+      <h3 style="margin:0;">Vehicle Preview</h3>
+      <button class="btn btn-ghost btn-sm" id="preview-close">Close</button>
+    </div>
+    <div class="preview-frame" id="preview-content"></div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/vehicle-edit.js"></script>
+</body>
+</html>

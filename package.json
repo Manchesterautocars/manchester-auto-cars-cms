@@ -1,0 +1,13 @@
+{
+  "name": "manchester-auto-cars-cms",
+  "version": "2.0.0",
+  "description": "Manchester Auto Cars — private vehicle management CMS. Publishes vehicle inventory to Website 1 via GitHub, with vehicle photos hosted on Cloudinary.",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

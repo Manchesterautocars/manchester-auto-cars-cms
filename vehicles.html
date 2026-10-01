@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vehicles — Manchester Auto Cars CMS</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="sidebar-mount"></div>
+  <div class="main">
+    <header class="topbar">
+      <div class="flex gap-12">
+        <button class="hamburger" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div id="topbar-title"></div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-ghost" id="btn-pull">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Pull Latest
+        </button>
+        <a class="btn btn-primary" href="vehicle-edit.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+          Add Vehicle
+        </a>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="card mb-16" id="publish">
+        <div class="card-header" style="margin-bottom:10px;">
+          <h2>Publish to Website</h2>
+          <span class="text-grey text-sm" id="publish-target"></span>
+        </div>
+        <p class="text-grey text-sm mb-16">This commits every vehicle below to <code id="publish-path-label"></code> in the Manchester Auto Cars GitHub repository. The public website (Website 1) rebuilds from that file — deleting a vehicle here and publishing removes it from the public site.</p>
+        <button class="btn btn-primary" id="btn-publish">Publish All Vehicles</button>
+      </div>
+
+      <div class="card mb-16">
+        <div class="field-row cols-3" style="margin-bottom:0;">
+          <div class="field">
+            <label for="f-search">Search</label>
+            <input id="f-search" type="text" placeholder="Make, model, variant…">
+          </div>
+          <div class="field">
+            <label for="f-status">Status</label>
+            <select id="f-status">
+              <option value="">All statuses</option>
+              <option value="available">Available</option>
+              <option value="reserved">Reserved</option>
+              <option value="sold">Sold</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-featured">Featured</label>
+            <select id="f-featured">
+              <option value="">All vehicles</option>
+              <option value="yes">Featured only</option>
+              <option value="no">Not featured</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>All Vehicles</h2>
+          <span class="text-grey text-sm" id="result-count"></span>
+        </div>
+        <div class="table-wrap responsive-cards">
+          <table class="data-table" id="vehicles-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Vehicle</th>
+                <th>Price</th>
+                <th>Mileage</th>
+                <th>Status</th>
+                <th>Featured</th>
+                <th>Added</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="vehicles-tbody"></tbody>
+          </table>
+        </div>
+        <div id="vehicles-empty" class="empty-state" style="display:none;">
+          <h3>No vehicles found</h3>
+          <p>Try clearing your filters. On a fresh browser, use <strong>Pull Latest</strong> to load the published inventory from GitHub, or add a vehicle.</p>
+          <a class="btn btn-primary" href="vehicle-edit.html">Add Vehicle</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/vehicles.js"></script>
+</body>
+</html>
